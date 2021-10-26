@@ -8,7 +8,7 @@ int main(){
     z = (float *)malloc(sizeof(float));
     *z = x + y;
 
-    printf("%.0f\n", *z);
+    printf("\nSoma eh igual: %.1f\n", *z);
 
     return 0;
 }
