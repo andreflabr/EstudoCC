@@ -10,13 +10,13 @@ int main(){
     int i, j;
 
     printf("Quantos alunos serao cadastrados?\n");
-    scanf("%d", &i);
+    scanf("%d", &j);
 
     alunos **a;
-    a = (alunos **)malloc(i*sizeof(alunos *))
+    a = (alunos **)malloc(j*sizeof(alunos *))
 
-    for(j=0; j<i; j++){
-        a[j] = (alunos *)malloc(sizeof(alunos));
+    for(i=0; i<j; i++){
+        a[i] = (alunos *)malloc(sizeof(alunos));
     }
 
         printf("Digite a matricula da pessoa:\n");

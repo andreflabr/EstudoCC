@@ -10,5 +10,6 @@ int main(){
 
     printf("\nSoma eh igual: %.1f\n", *z);
 
-    return 0;
+    free(z);
+    system("pause>nul");
 }
