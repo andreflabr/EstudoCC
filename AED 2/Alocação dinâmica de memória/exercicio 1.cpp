@@ -11,5 +11,4 @@ int main(){
     printf("\nSoma eh igual: %.1f\n", *z);
 
     free(z);
-    system("pause>nul");
 }
