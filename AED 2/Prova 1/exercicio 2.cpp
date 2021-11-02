@@ -9,7 +9,7 @@ void ordena(int x[], int tamanho){
         printf("%d ", x[i]);
     }
     printf("\n");
-
+////////////////////////////////////////////////////////
     for (i=1; i<tamanho; i++){
         aux=x[i];
         j=i-1;
@@ -19,6 +19,7 @@ void ordena(int x[], int tamanho){
         }
         x[j+1] = aux;
     }
+////////////////////////////////////////////////////////
     printf("Depois: ");
     for(i=0; i<6; i++){
         printf("%d ", x[i]);
