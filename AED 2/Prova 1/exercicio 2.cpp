@@ -8,7 +8,7 @@ void ordena(int x[], int tamanho){
     for(i=0; i<6; i++){
         printf("%d ", x[i]);
     }
-    printf("\n");
+    printf("\n\n");
 ////////////////////////////////////////////////////////
     for (i=1; i<tamanho; i++){
         aux=x[i];
@@ -18,9 +18,14 @@ void ordena(int x[], int tamanho){
             j--;
         }
         x[j+1] = aux;
+
+        for(int j=0;j<tamanho;j++){ //apresentando o vetor apos a etapa
+            printf("%d ", x[j]);
+        }
+        printf("\n");
     }
 ////////////////////////////////////////////////////////
-    printf("Depois: ");
+    printf("\nDepois: ");
     for(i=0; i<6; i++){
         printf("%d ", x[i]);
     }
