@@ -1,6 +1,5 @@
-#ifndef MATEMATICA_H_INCLUDED
-#define MATEMATICA_H_INCLUDED
+int potencia (int base, int expoente);
 
+int resto (int valor, int divisor);
 
-
-#endif // MATEMATICA_H_INCLUDED
+int arredonda (float vlr);
