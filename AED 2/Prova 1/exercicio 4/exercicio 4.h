@@ -1,6 +1,7 @@
-#ifndef EXERCICIO_4_H_INCLUDED
-#define EXERCICIO_4_H_INCLUDED
+struct clientes{
+    int identificador;
+    char nome[30];
+    double leitura_atual, leitura_anterior;
+};
 
-
-
-#endif // EXERCICIO_4_H_INCLUDED
+clientes* dados_clientes(int ident, char name, double atual, double anterior);
