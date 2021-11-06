@@ -31,15 +31,14 @@ void stats(cli *x){
 
     percentual= x->leitura_atual*100;
     percentual= percentual/x->leitura_anterior;
-    percentual = percentual-100;
 
-    if(percentual>=10){
+    if(percentual>=110){
         printf("\nSTATUS: Alerta\n\n");
 
-    }else if((percentual < -10) && (percentual <10)){
+    }else if((percentual >= 90) && (percentual < 109)){
         printf("\nSTATUS: Estavel\n\n");
 
-    }else if(percentual >= -10){
+    }else if(percentual < 90){
         printf("\nSTATUS: Economico\n\n");
 
     }

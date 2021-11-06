@@ -42,7 +42,6 @@ int main(){
 
         stats(cliente1);
 
-
         break;
 
     case 4://sair e liberar
@@ -52,5 +51,7 @@ int main(){
     }
     }
 
-    return 0;
+liber(cliente1);
+
+return 0;
 }
