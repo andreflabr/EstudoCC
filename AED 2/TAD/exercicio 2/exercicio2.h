@@ -1,15 +1,12 @@
 struct Aluno{
-    int matr;
+    int m;
     double notas[3];
 };
-
-Aluno* cria_aluno(int matricula, double nota1, double nota2, double nota3);
-
-int obter_matricula(Aluno *a);
-
-double obter_nota1(Aluno *a);
-double obter_nota2(Aluno *a);
-double obter_nota3(Aluno *a);
-double obter_media(Aluno *a);
-char* situacao(Aluno *a);
-void libera(Aluno *a);
+Aluno* aluno(int matricula, double nota_1, double nota_2, double nota_3);
+int matricula(Aluno *x);
+double nota_1(Aluno *x);
+double nota_2(Aluno *x);
+double nota_3(Aluno *x);
+double media(Aluno *x);
+char* situacao(Aluno *x);
+void libera(Aluno *x);

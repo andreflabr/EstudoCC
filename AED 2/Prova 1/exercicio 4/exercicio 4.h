@@ -4,4 +4,4 @@ struct clientes{
     double leitura_atual, leitura_anterior;
 };
 
-clientes* dados_clientes(int ident, char name, double atual, double anterior);
+clientes* dados_clientes(int ident, char name[], double atual, double anterior);
