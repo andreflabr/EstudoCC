@@ -51,7 +51,5 @@ int main(){
     }
     }
 
-liber(cliente1);
-
 return 0;
 }
