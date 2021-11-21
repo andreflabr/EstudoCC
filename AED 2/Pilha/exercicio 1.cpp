@@ -7,46 +7,37 @@ int pilha[MAX];
 void push(int valor){
     if(topo < MAX ){
         pilha[topo] = valor; 
-        topo++; 
+        topo++;
     } else {
         printf("pilha cheia\n");
     }
 }
 
-
-int pop(){
-    
+void pop(){
+    topo=topo-1;
+    printf("elemento %d removido\n", pilha[topo]);
 }
 
-void imprime_pilha(int aux){
-    if(aux>=0){
-        printf("%d\n", pilha[aux]);
-        imprime_pilha(aux-1);
-    }  
+void imprime_pilha(){
+    for(int i=topo-1; i>=0; i--){ 
+            printf("%d\n", pilha[i]);
+    }
 }
 
 int main(){
-    int x;
 
-    push(10); //10 - OK
-    push(7); //10,7 - OK
-    push(5); //10,7,5  - OK
-    push(8); //10,7,5 - PILHA CHEIA
+    push(10); //10 
+    push(7); //10,7
+    push(5); //10,7,5
 
-    printf("\n1 - Remover topo da pilha\n2 - Imprimir\n3 - Sair\n");
-    scanf("%d", &x);
+    imprime_pilha();
 
-    do{
-    switch(x){
-        case 1:
-            pop();
-            break;
-        case 2:
-            imprime_pilha(MAX);
-            break;
-        }
-    }while(x != 3);
+    pop();
+    imprime_pilha();    
+    pop();
+    imprime_pilha();
+    pop();
+    imprime_pilha();
 
 
-    return 0;
 }
