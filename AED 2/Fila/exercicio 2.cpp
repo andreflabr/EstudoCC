@@ -2,15 +2,14 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 int inicio = 0, fim = 0;
 #define MAX 5
-int fila[MAX];
 int *f;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void enqueue(int valor) {
-    if (fim < MAX) {
+void enqueue(int valor){
+    if(fim < MAX){
         f[fim] = valor;
         printf("%d entrou na fila\n",f[fim]);
         fim++;
-    } else {
+    }else{
         printf("Fila cheia\n");
     }
 }
@@ -18,16 +17,16 @@ void enqueue(int valor) {
 int denqueue(){
     int r;
 
-    if (fim > 0) {
+    if(fim > 0){
         r=f[inicio];
         inicio++;
         return r;
-    } else {
+    }else{
         printf("Fila vazia!\n");
     }
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-int main() {
+int main(){
     int x, y, z;
 
     f=(int *)malloc(MAX*sizeof(int));
