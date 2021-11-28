@@ -4,7 +4,7 @@ struct banco{
     int identificador, posicao, idade, categoria;
     char nome[40], deficiencia;
 };
-#define MAX 10
+#define MAX 3
 struct banco v[MAX], temporario;
 int inicio=0, fim=0, i;
 //////////////////////////////////////////////////////////////////////////////////////////////
@@ -117,3 +117,32 @@ int main(){
 return 0;
 }
 //////////////////////////////////////////////////////////////////////////////////////////////
+/*
+casos testes:
+1
+11
+1
+60
+andre
+s
+1
+2
+22
+2
+60
+joao
+n
+1
+3
+33
+50
+cleber
+s
+1
+4
+44
+20
+ana
+n
+
+*/
