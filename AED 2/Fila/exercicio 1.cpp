@@ -1,5 +1,5 @@
 #include<bits/stdc++.h>
-
+//////////////////////////////////////////////////////////////////////////////////////////////
 struct banco{
     int identificador, posicao, idade, categoria;
     char nome[40], deficiencia;
@@ -7,7 +7,7 @@ struct banco{
 #define MAX 10
 struct banco v[MAX], temporario;
 int inicio=0, fim=0, i;
-
+//////////////////////////////////////////////////////////////////////////////////////////////
 int verificar(){
     int i=fim-1;
     if(v[i].categoria>temporario.categoria){
@@ -19,7 +19,7 @@ int verificar(){
     }
     return i+1;
 }
-
+//////////////////////////////////////////////////////////////////////////////////////////////
 void enqueue(){
     int p;
     temporario.posicao = fim;
@@ -51,10 +51,10 @@ void enqueue(){
     if(fim==0){
         v[fim].identificador = temporario.identificador;
         v[fim].posicao = temporario.posicao;
-        strcpy(v[fim].nome, temporario.nome);
         v[fim].idade = temporario.idade;
         v[fim].deficiencia = temporario.deficiencia;
         v[fim].categoria = temporario.categoria;
+        strcpy(v[fim].nome, temporario.nome);
         fim++;
     }else{
         p = verificar();
@@ -62,10 +62,10 @@ void enqueue(){
         for(i=fim; i>p; i--){
             v[i].identificador = v[i-1].identificador;
             v[i].posicao = v[i-1].posicao;
-            strcpy(v[i].nome, v[i-1].nome);
             v[i].idade = v[i-1].idade;
             v[i].deficiencia = v[i-1].deficiencia;
             v[i].categoria = v[i-1].categoria;
+            strcpy(v[i].nome, v[i-1].nome);
         }
         v[p].identificador = temporario.identificador;
         v[p].posicao = temporario.posicao;
@@ -76,7 +76,7 @@ void enqueue(){
         fim++;
     }
 }
-
+//////////////////////////////////////////////////////////////////////////////////////////////
 int denqueue(){
     int t;
     if(fim!=0){
@@ -85,13 +85,13 @@ int denqueue(){
         return t;
     }
 }
-
+//////////////////////////////////////////////////////////////////////////////////////////////
 void imprimir(void){
     for(i=inicio; i<fim; i++){
         printf("Nome: %s, idade: %d, deficiencia: %s\n", v[i].nome, v[i].idade, v[i].deficiencia );
     }
 }
-
+//////////////////////////////////////////////////////////////////////////////////////////////
 int main(){
     int x, y;
 
@@ -116,3 +116,4 @@ int main(){
     }while(x!=5);
 return 0;
 }
+//////////////////////////////////////////////////////////////////////////////////////////////
