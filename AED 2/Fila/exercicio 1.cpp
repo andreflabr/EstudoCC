@@ -2,13 +2,13 @@
 //////////////////////////////////////////////////////////////////////////////////////////////
 struct banco{
     int identificador, posicao, idade, categoria;
-    char nome[40], deficiencia;
+    char nome[50], deficiencia;
 };
-#define MAX 3
+#define MAX 0
 struct banco v[MAX], temporario;
 int inicio=0, fim=0, i;
 //////////////////////////////////////////////////////////////////////////////////////////////
-int denqueue(void){
+int remover_enqueue(void){
     int t;
     if(fim!=0){
         t=inicio;
@@ -29,8 +29,9 @@ int verificar(){
     return i+1;
 }
 //////////////////////////////////////////////////////////////////////////////////////////////
-void enqueue(){
+void inserir_enqueue(){
     int p;
+
     temporario.posicao = fim;
     printf("\nIdentificador: \n");
     scanf("%d", &temporario.identificador);
@@ -41,7 +42,7 @@ void enqueue(){
     printf("Nome: \n");
     scanf(" %[^\n]", temporario.nome);
     printf("deficiente: (s/n)\n");
-    scanf(" %[^\n]", temporario.deficiencia);
+    scanf(" %c", &temporario.deficiencia);
 
     if(temporario.deficiencia == 's'){
         if(temporario.idade >60){
@@ -86,31 +87,31 @@ void enqueue(){
     }
 }
 //////////////////////////////////////////////////////////////////////////////////////////////
-void imprimir(void){
+void mostra_fila(void){
     for(i=inicio; i<fim; i++){
         printf("Nome: %s, idade: %d, deficiencia: %c\n", v[i].nome, v[i].idade, v[i].deficiencia);
     }
 }
 //////////////////////////////////////////////////////////////////////////////////////////////
 int main(){
-    int x, y;
+    int x=0, y;
 
     do{
         printf("1 - Inserir | 2 - Remover | 3 - Imprimir | 4 - Primeiro da fila | 5 - Sair\n");
         scanf("%d", &x);
         switch(x){
-        case 1:
-            enqueue();
-            break;
-        case 2:
-            y = denqueue();
-            printf("Retirado identificador %d, de nome %s\n", v[y].identificador, v[y].nome);
-            break;
-        case 3:
-            imprimir();
-            break;
-        case 4:
-            printf("Nome: %s, idade: %d, deficiencia: %c\n", v[inicio].nome, v[inicio].idade, v[inicio].deficiencia );
+            case 1:
+                inserir_enqueue();
+                break;
+            case 2:
+                y = remover_enqueue();
+                printf("Retirado identificador %d, de nome %s\n", v[y].identificador, v[y].nome);
+                break;
+            case 3:
+                mostra_fila();
+                break;
+            case 4:
+                printf("Nome: %s, idade: %d, deficiencia: %c\n", v[inicio].nome, v[inicio].idade, v[inicio].deficiencia );
         }
     }while(x!=5);
 
