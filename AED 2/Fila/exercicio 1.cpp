@@ -8,7 +8,7 @@ struct banco{
 struct banco v[MAX], temporario;
 int inicio=0, fim=0, i;
 //////////////////////////////////////////////////////////////////////////////////////////////
-int remover_enqueue(void){
+int denqueue(void){
     int t;
     if(fim!=0){
         t=inicio;
@@ -29,7 +29,7 @@ int verificar(){
     return i+1;
 }
 //////////////////////////////////////////////////////////////////////////////////////////////
-void inserir_enqueue(){
+void enqueue(){
     int p;
 
     temporario.posicao = fim;
@@ -87,7 +87,7 @@ void inserir_enqueue(){
     }
 }
 //////////////////////////////////////////////////////////////////////////////////////////////
-void mostra_fila(void){
+void imprimir(void){
     for(i=inicio; i<fim; i++){
         printf("Nome: %s, idade: %d, deficiencia: %c\n", v[i].nome, v[i].idade, v[i].deficiencia);
     }
@@ -101,14 +101,14 @@ int main(){
         scanf("%d", &x);
         switch(x){
             case 1:
-                inserir_enqueue();
+                enqueue();
                 break;
             case 2:
-                y = remover_enqueue();
+                y = denqueue();
                 printf("Retirado identificador %d, de nome %s\n", v[y].identificador, v[y].nome);
                 break;
             case 3:
-                mostra_fila();
+                imprimir();
                 break;
             case 4:
                 printf("Nome: %s, idade: %d, deficiencia: %c\n", v[inicio].nome, v[inicio].idade, v[inicio].deficiencia );
