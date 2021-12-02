@@ -125,11 +125,11 @@ int main(){
             if(teste=0){
                 printf("Posição invalida, teste novamente com outra posição!\n");
             }else {
-                printf("Inserido!");
+                printf("Inserido!\n");
             }
             break;
         case 2:
-            printf("Digite o elemento a ser removida");
+            printf("Digite o elemento a ser removido\n");
             scanf("%d", &elem);
 
             remover(elem);
@@ -139,7 +139,7 @@ int main(){
             break;
         case 4:
             c=lista();
-            printf("A lista possui %d elementos", c);
+            printf("A lista possui %d elementos\n", c);
         }
     }while(x!=5);
 
