@@ -33,8 +33,6 @@ int main(){
     do{
         printf("1-inserir Letra\n2-Numero de nos\n3-Altura\n4-Nos folhas\n5-Sair");
         scanf("%d", &x);
-
-
         switch(x){
             case 1:
                 printf("Digite a letra a adicionar:\n");
@@ -48,7 +46,7 @@ int main(){
 
                 break;
             case 4:
-            
+
         }
     }while(x!=5);
 
