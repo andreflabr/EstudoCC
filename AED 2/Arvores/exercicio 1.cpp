@@ -92,7 +92,7 @@ int main(){
         switch(x){
             case 1:
                 printf("Digite a letra a adicionar:\n");
-                scanf("%c", &y);
+                scanf(" %c", &y);
                 insertNode(&A, y);
                 break;
             case 2:
@@ -110,13 +110,13 @@ int main(){
             case 5:
                 printf("PreOrder\n");
                 preOrder(A);
-                printf("InOrder\n");
+                printf("\nInOrder\n");
                 inOrder(A);
-                printf("PosOrder\n");
+                printf("\nPosOrder\n");
                 posOrder(A);
+                printf("\n");
                 break;
         }
     }while(x!=6);
-
     return 0;
 }
