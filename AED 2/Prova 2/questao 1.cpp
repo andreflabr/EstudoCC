@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 ////////////////////////////////////////////////////////////////////////////////////////////////
-struct Nodo {
+struct Nodo{
     int num;
     struct Nodo *pProximo;
 };
@@ -8,15 +8,15 @@ struct Nodo {
 struct Nodo *pInicio = NULL;
 struct Nodo *pAux;
 ////////////////////////////////////////////////////////////////////////////////////////////////
-void push(int z){
+void push(){
     struct Nodo *pNodo = (Nodo *)malloc(sizeof(struct Nodo));
 
-    pNodo->num=z;
+    printf("Digite um numero\n");
+    scanf("%d", &pNodo->num);
 
 	pNodo->pProximo = pInicio;
 	pInicio = pNodo;
 }
-
 ////////////////////////////////////////////////////////////////////////////////////////////////
 void imprimir(struct Nodo *pNodo) {
     if ( pNodo != NULL ) {
@@ -26,34 +26,22 @@ void imprimir(struct Nodo *pNodo) {
     }
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////
-/*void ordenar(){
-    int i,j, aux;
-    for(i=0; i<MAX-1; i++){
-        for(j=1; j<MAX-i; j++){
-            if(lista[j]<lista[j-1]){
-                aux=lista[j];
-                lista[j]=lista[j-1];
-                lista[j-1]=aux;
-            }
-        }
-    }
-    printf("Numeros ordenados!\n"); 
-}*/
-////////////////////////////////////////////////////////////////////////////////////////////////
 int main(){
     int x;
+    do{
+        printf("1-Adicionar\n2-Ordenar e imprimir\n3-Sair");
+        scanf("%d", &x);
 
-    push(5);
-    push(10);
-    push(7);
-    push(3);
-    push(1);
-    push(9);
+        switch(x){
+            case 1:
+                push();
+                break;
+            case 2:
+                imprimir(pInicio);
+                break;
+        }
 
-    imprimir(pInicio);
-
-    ordenar();
-
-
+    }while(x!=3);
+    
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////
