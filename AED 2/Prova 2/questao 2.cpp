@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 /////////////////////////////////////////////////////////////////////////////////////////////
 int fim=0;
 #define MAX 3
@@ -50,7 +50,6 @@ void imprimir(){
 }
 void procurar(int x){
     int z=0;
-
     for(int i=0; i<MAX; i++){
         if(x == lista[i]){
             printf("Valor encontrado!\n");  
@@ -66,11 +65,9 @@ void procurar(int x){
 /////////////////////////////////////////////////////////////////////////////////////////////
 int main(){
     int x, valor, r_valor, procura;
-
     do{
         printf("1-inserir\n2-remover\n3-imprimir\n4-procurar\n5-sair\n");
         scanf("%d", &x);
-
         switch(x){
             case 1:
                 printf("Digite o valor a ser inserido: \n");
@@ -94,15 +91,3 @@ int main(){
 	return 0;
 }
 /////////////////////////////////////////////////////////////////////////////////////////////
-/*casos teste
-1
-19
-
-1
-34
-
-1
-23
-
-
-*/
