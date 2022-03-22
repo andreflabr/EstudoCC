@@ -23,6 +23,7 @@ if __name__ == '__main__':
     conta2.sacar(50)
     conta2.imprimir_saldo()
     '''
+    '''
     print("o limite da conta é {}".format(conta2.get_limite()))
     conta2.set_limite(5000)
     print("o limite da conta é {}".format(conta2.get_limite()))
@@ -30,3 +31,15 @@ if __name__ == '__main__':
     print("o nome do titular {}".format(conta2.get_titular()))
     conta2.set_titular("andre luiz da silva")
     print("o nome novo do titular {}".format(conta2.get_titular()))
+    '''
+
+    print(conta.limite)
+    print(conta2.limite)
+    conta.limite=10000
+    conta2.limite=20000
+    print(conta.limite)
+    print(conta2.limite)
+    print(conta.saldo)
+    print(conta2.saldo)
+
+    print(conta.codigo_banco())
