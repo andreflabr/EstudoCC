@@ -2,7 +2,6 @@
 class Conta:
     def __init__ (self, numero, titular, saldo, limite):
         #atributos da conta
-
         self.__numero=numero
         self.__titular=titular
         self.__saldo=saldo
@@ -19,7 +18,8 @@ class Conta:
     def sacar(self, valor):
         self.__saldo = self.__saldo - valor
 
-    #getters e setters
+#getters e setters
+    
     def get_limite(self):
         return self.__limite
 
