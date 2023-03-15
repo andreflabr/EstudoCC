@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1678812670 source:c:\users\andré\desktop\projectavl\main.cpp
+	<iostream>
+	<string>
+	<stdio.h>
+	<stdlib.h>
+	<bits/stdc++.h>
+
+1678887335 source:c:\users\prefgxp\desktop\projectavl - atualizado\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+
