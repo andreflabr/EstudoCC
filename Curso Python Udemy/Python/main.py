@@ -408,6 +408,78 @@ texto6 = texto.ljust(10)
 print(texto6)
 texto7 = texto.rjust(10)
 print(texto7)
-"""
+#--------------------------------------------------------
+#quebrar string por caracter
+carros = "gol;palio;corsa;punto;corcel;uno;corola;civic;santana"
+lista_carros = carros.split(";")
+print(lista_carros)
+
+text = "ola mundo\nexemplo\nesta é outra linha\netc"
+lista = text.splitlines()
+print (lista)
+
+#substituir texto
+texto2 = "teste de nao sei o que, teste"
+texto3 = texto2.replace("teste", "python")
+print(texto3)
+
+texto4 = texto2.replace("teste", "c++", 1) #somente a primeira ocorrencia
+print(texto4)
+
+texto5 = texto2.replace("", "_") 
+print(texto5)
+
+texto6 = texto2.replace("teste", "") #remove a palavra
+print(texto6)
 
 #--------------------------------------------------------
+#remover espaços em branco
+#strip remove no inicio e fim
+#lstrip inicio
+#rstring final
+
+texto = "     texto com muitos espaços   "
+print(".", texto, ".")
+
+a = texto.strip() 
+print(a)
+
+texto2 = "texto com muitos barcos implementados"
+b = texto2.strip("texto")
+print(b)
+
+#--------------------------------------------------------
+#validação por tipo de conteudo
+#identificar se uma string possui numeros etc
+
+#se for tudo numero/letra
+
+texto= "s33453das45345"
+print(texto.isalnum())
+
+texto2= ";;;334    53jk    dak5"
+print(texto2.isalnum()) #falso por conter simbolo e espaços
+
+texto3 = "soahoas"   #tudo letra
+print(texto3.isalpha())
+
+texto4 = "5464576456"   #numericos
+print(texto4.isdigit())
+
+texto5 = "43534"   #inclui frações mas é igual ao isdigit
+print(texto5.isnumeric())
+
+texto6 = "TESTE"   #maiuscula
+print(texto6.isupper())
+
+texto7 = "teste"   #minuscula
+print(texto7.islower())
+
+texto8 = "  \n \t"   #se possui somente espaços
+print(texto8.isspace())
+
+texto8 = "teste\n"   #se possui caracteres que nao imprime igual o /n
+print(texto8.isprintable())
+
+#--------------------------------------------------------
+"""
