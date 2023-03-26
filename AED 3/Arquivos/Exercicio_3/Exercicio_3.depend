@@ -1,5 +1,6 @@
 # depslib dependency file v1.0
-1679844655 source:c:\users\andré\desktop\estudocc\aed 3\arquivos\exercicio_3\main.c
+1679851399 source:c:\users\andré\desktop\estudocc\aed 3\arquivos\exercicio_3\main.c
 	<stdio.h>
 	<stdlib.h>
+	<string.h>
 
