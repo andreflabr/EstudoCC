@@ -50,13 +50,6 @@ void listar_todos(char name_arq_ler[]){
     }
 }
 ///==================================================================================================================================
-void removendo(){
-
-}
-
-
-
-///==================================================================================================================================
 void remover(char name_arq_rem[]){
 
     //ideia é criar um arquivo auxiliar para remover, apagando o original e recriando sem o elemento
@@ -64,14 +57,11 @@ void remover(char name_arq_rem[]){
     Alunos a;
     char aux[] = {"aux"};
     int matricula_remover;
-    FILE *file = fopen(name_arq_rem, "rb"/*"rb"*/); //leitura e escrita binaria
+    FILE *file = fopen(name_arq_rem, "rb"); //leitura binaria   rb
 
-///---------------------- usando arquivo auxiliar para remover ----------------------
-
+    //usando arquivo auxiliar para remover
     strcat(aux, name_arq_rem);
-    FILE *file_aux = fopen(aux, "ab"/*"ab"*/); //anexar
-
-///---------------------- criado arquivo auxiliar para remover ----------------------
+    FILE *file_aux = fopen(aux, "ab"); //anexar  ab
 
     printf("\nDigite a matricula a ser removida: \n");
     scanf("%d", &matricula_remover);
@@ -81,31 +71,43 @@ void remover(char name_arq_rem[]){
             if(fread(&a, sizeof(Alunos), 1, file)){
                 if(a.matricula != matricula_remover){
                     fwrite(&a, sizeof(Alunos), 1, file_aux); //salvando em novo arquivo sem o que precisa remover
-                    //printf("\nName: %s; matricula: %d; endereco: %s; curso: %s", a.nome, a.matricula, a.endereco, a.curso);
+                    printf("\nName: %s; matricula: %d; endereco: %s; curso: %s", a.nome, a.matricula, a.endereco, a.curso);
                 }
-                /*
                 else {
                     printf("\nItem encontrado e removido!\n");
                 }
-                */
             }
         }
-        fclose(file);
-        fclose(file_aux);
     }
     else {
         printf("\nErro ao abrir arquivo para remover!\n");
     }
 
-    //--------------------------------------------------------------
+    fclose(file);
+    fclose(file_aux);
+
+    //file = fopen(name_arq_rem, "ab");
+    //file_aux = fopen(aux, "ab");
+
 
     remove(name_arq_rem);
+    file = fopen(name_arq_rem, "ab");
 
-    //--------------------------------------------------------------
 
-    file_aux = fopen(aux, "rb"/*"rb"*/);
-    file = fopen(name_arq_rem, "ab"/*"ab"*/);
+    if(file){
+        printf("\nfile 1 original aberto\n");
+    }
+    else
+        printf("\nfile 1 original fechado\n");
 
+    if(file_aux){
+        printf("\nfile aux aberto\n");
+    }
+    else
+        printf("\nfile aux fechado\n");
+
+
+    file_aux = fopen(aux,"rb");
     if(file_aux){
         while(!feof(file_aux)){
             if(fread(&a, sizeof(Alunos), 1, file_aux)){
@@ -113,18 +115,13 @@ void remover(char name_arq_rem[]){
                     fwrite(&a, sizeof(Alunos), 1, file); //salvando em novo arquivo sem o que precisa remover
                     printf("\nName: %s; matricula: %d; endereco: %s; curso: %s", a.nome, a.matricula, a.endereco, a.curso);
                 }
-                else {
-                    printf("\nTerminado com Sucesso!\n");
-                }
             }
         }
-        fclose(file);
-        fclose(file_aux);
     }
     else {
-        //printf("\nErro ao abrir arquivo para remover!\n");
-        printf("\nnao esta entrando nesse!\n");
+        printf("\nErro ao abrir arquivo para remover!\n");
     }
+
 
 }
 ///==================================================================================================================================
