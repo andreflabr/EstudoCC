@@ -86,42 +86,9 @@ void remover(char name_arq_rem[]){
     fclose(file);
     fclose(file_aux);
 
-    //file = fopen(name_arq_rem, "ab");
-    //file_aux = fopen(aux, "ab");
 
-
-    remove(name_arq_rem);
-    file = fopen(name_arq_rem, "ab");
-
-
-    if(file){
-        printf("\nfile 1 original aberto\n");
-    }
-    else
-        printf("\nfile 1 original fechado\n");
-
-    if(file_aux){
-        printf("\nfile aux aberto\n");
-    }
-    else
-        printf("\nfile aux fechado\n");
-
-
-    file_aux = fopen(aux,"rb");
-    if(file_aux){
-        while(!feof(file_aux)){
-            if(fread(&a, sizeof(Alunos), 1, file_aux)){
-                if(a.matricula != matricula_remover){
-                    fwrite(&a, sizeof(Alunos), 1, file); //salvando em novo arquivo sem o que precisa remover
-                    printf("\nName: %s; matricula: %d; endereco: %s; curso: %s", a.nome, a.matricula, a.endereco, a.curso);
-                }
-            }
-        }
-    }
-    else {
-        printf("\nErro ao abrir arquivo para remover!\n");
-    }
-
+    remove(name_arq_rem); //apaga arquivo original
+    rename("auxcadastro.dat", name_arq_rem); //troca o nome do arquivo auxiliar pelo original
 
 }
 ///==================================================================================================================================
@@ -196,12 +163,12 @@ formiga
 cc
 1
 2
-erica
+joao
 formiga
 cc
 1
 3
-lisandra
+carlos
 formiga
 cc
 4
