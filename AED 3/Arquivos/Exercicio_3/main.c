@@ -86,7 +86,6 @@ void remover(char name_arq_rem[]){
     fclose(file);
     fclose(file_aux);
 
-
     remove(name_arq_rem); //apaga arquivo original
     rename("auxcadastro.dat", name_arq_rem); //troca o nome do arquivo auxiliar pelo original
 
