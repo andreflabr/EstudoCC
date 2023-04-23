@@ -1,3 +1,5 @@
+//https://www.geeksforgeeks.org/stdgcd-c-inbuilt-function-finding-gcd/
+
 #include<iostream>
 #include<bits/stdc++.h>
 #include<math.h>
