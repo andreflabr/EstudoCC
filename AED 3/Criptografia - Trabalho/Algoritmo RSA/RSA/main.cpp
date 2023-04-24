@@ -5,166 +5,32 @@
 #include<math.h>
 #include<cctype>
 using namespace std;
+///============================================================================================================
 
 char palavra[50];  //variavel global
 
 
-void palavra_numerica(void){
-
-    cout << "teste" << endl;
-    char palavra_c[50];
-    int i=0, j=0, palavra_cifrada[50], tam_palavra=0;
-
-    cout << palavra << endl;
-
-    tam_palavra = strlen(palavra);
-
-    while(palavra[i] != '\0'){
-        palavra_c[i] = toupper(palavra[i]);
-        i++;
-    }
-
-    cout << palavra_c << endl;
+///============================================================================================================
+void encriptando(int n, int z, int e, int d){
 
 
-    for(i=0; i<tam_palavra; i++){
-           switch(palavra_c[i]){
-                case 'A':
-                    palavra_cifrada[i] = 1;
-                    break;
 
-                case 'B':
-                    palavra_cifrada[i] = 2;
-                    break;
-
-                case 'C':
-                    palavra_cifrada[i] = 3;
-                    break;
-
-                case 'D':
-                    palavra_cifrada[i] = 4;
-                    break;
-
-                case 'E':
-                    palavra_cifrada[i] = 5;
-                    break;
-
-                case 'F':
-                    palavra_cifrada[i] = 6;
-                    break;
-
-                case 'G':
-                    palavra_cifrada[i] = 7;
-                    break;
-
-                case 'H':
-                    palavra_cifrada[i] = 8;
-                    break;
-
-                case 'I':
-                    palavra_cifrada[i] = 9;
-                    break;
-
-                case 'J':
-                    palavra_cifrada[i] = 10;
-                    break;
-
-                case 'K':
-                    palavra_cifrada[i] = 11;
-                    break;
-
-                case 'L':
-                    palavra_cifrada[i] = 12;
-                    break;
-
-                case 'M':
-                    palavra_cifrada[i] = 13;
-                    break;
-
-                case 'N':
-                    palavra_cifrada[i] = 14;
-                    break;
-
-                case 'O':
-                    palavra_cifrada[i] = 15;
-                    break;
-
-                case 'P':
-                    palavra_cifrada[i] = 16;
-                    break;
-
-                case 'Q':
-                    palavra_cifrada[i] = 17;
-                    break;
-
-                case 'R':
-                    palavra_cifrada[i] = 18;
-                    break;
-
-                case 'S':
-                    palavra_cifrada[i] = 19;
-                    break;
-
-                case 'T':
-                    palavra_cifrada[i] = 20;
-                    break;
-
-                case 'U':
-                    palavra_cifrada[i] = 21;
-                    break;
-
-                case 'V':
-                    palavra_cifrada[i] = 22;
-                    break;
-
-                case 'W':
-                    palavra_cifrada[i] = 23;
-                    break;
-
-                case 'X':
-                    palavra_cifrada[i] = 24;
-                    break;
-
-                case 'Y':
-                    palavra_cifrada[i] = 25;
-                    break;
-
-                case 'Z':
-                    palavra_cifrada[i] = 26;
-                    break;
-
-        }
-
-    }
-    /* //printar a palavra numerica
-    for(j=0; j<tam_palavra; j++){
-        cout << palavra_cifrada[j];
-    }
-    */
 }
 
 
-
-void encriptando(int n, int z, int e, int d){
-
-    palavra_numerica();
-
-
-    /*char palavra_c[50];
+///============================================================================================================
+int palavra_numerica(void/*int n, int z, int e, int d*/){
+    char palavra_c[50];
     int i=0, j=0, palavra_cifrada[50], tam_palavra=0;
 
-    cout << palavra << endl;
-
+    //cout << palavra << endl;
     tam_palavra = strlen(palavra);
 
     while(palavra[i] != '\0'){
         palavra_c[i] = toupper(palavra[i]);
         i++;
     }
-
-
-    cout << palavra_c << endl;
-
+    //cout << palavra_c << endl;
 
     for(i=0; i<tam_palavra; i++){
            switch(palavra_c[i]){
@@ -271,22 +137,14 @@ void encriptando(int n, int z, int e, int d){
                 case 'Z':
                     palavra_cifrada[i] = 26;
                     break;
-
         }
-
     }
     //printar a palavra numerica
     for(j=0; j<tam_palavra; j++){
         cout << palavra_cifrada[j];
     }
-    */
-
-
-
-
 }
-
-
+///============================================================================================================
 int calcule_n_z_e_d(int p, int q){
     int n, z, e, d;
 
@@ -312,10 +170,12 @@ int calcule_n_z_e_d(int p, int q){
             }
         }
     }
+
+    palavra_numerica();
     encriptando(n, z, e, d);
 }
 
-///=======================================================================
+///============================================================================================================
 //funçao pra retornar verdadeiro ou falso quando for primo ou nao
 bool primo(int x){
     if(x <= 1){
@@ -328,7 +188,7 @@ bool primo(int x){
         }
         return true; //eh primo
 }
-///=======================================================================
+///============================================================================================================
 //testa de o que a função primo retornau é verdadeiro ou falso
 bool teste_primo(int P, int Q){
     bool b_p, b_q;
@@ -350,7 +210,7 @@ bool teste_primo(int P, int Q){
         return false;
     }
 }
-///=======================================================================
+///============================================================================================================
 int main(){
     int p, q;
     bool primo_p_q = false;
@@ -364,7 +224,6 @@ int main(){
     while(primo_p_q != true){
         cout << "Digite valores primos para P e Q:" << endl;
         cin >> p >> q;
-
         primo_p_q = teste_primo(p, q);
     }
 
