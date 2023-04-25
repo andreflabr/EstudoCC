@@ -139,11 +139,8 @@ void palavra_numerica(int n, int z, int e, int d){
 
     //printar a palavra numerica
     for(j=0; j<tam_palavra; j++){
-        cout << palavra_cifrada[j];
+        cout << "\t" << palavra_cifrada[j];
     }
-
-    //encriptando(palavra_cifrada, n, z, e, d );
-
 
 }
 ///============================================================================================================
@@ -200,7 +197,8 @@ bool primo(int x){
                 return false; //falso primo
             }
         }
-        return true; //eh primo
+
+    return true; //eh primo
 }
 ///============================================================================================================
 //testa de o que a função primo retornau é verdadeiro ou falso
@@ -211,7 +209,6 @@ bool teste_primo(int P, int Q){
     b_q = primo(Q);
 
     if((b_p & b_q) == true){
-        cout << "\nOs valores digitados sao primos!" << endl;
         return true;
     }
     else {
@@ -232,8 +229,6 @@ int main(){
     cout << "Digite a palavra que voce quer criptografar: ";
     cin >> palavra;
 
-    //cout << palavra << endl;
-
     //usuario digitar os valores primos quando eles sao falsos
     while(primo_p_q != true){
         cout << "Digite valores primos para P e Q:" << endl;
@@ -246,7 +241,9 @@ int main(){
     e = calcule_e(z);
     d = calcule_d(e, z);
 
-    cout << n << "\n" << z << "\n" << e << "\n"<< d << endl;
+    palavra_numerica(n, z, e, d);
+
+    //cout << n << "\n" << z << "\n" << e << "\n"<< d << endl;
 
     return 0;
 }
