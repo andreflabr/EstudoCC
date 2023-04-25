@@ -11,29 +11,26 @@ char palavra[50];  //variavel global
 
 
 ///============================================================================================================
-void encriptando(int n, int z, int e, int d){
+/*void encriptando(*int palavra_cifrada_2[50], int n, int z, int e, int d){
 
 
 
-}
-
+}*/
 
 ///============================================================================================================
-int palavra_numerica(void/*int n, int z, int e, int d*/){
-    char palavra_c[50];
+void palavra_numerica(int n, int z, int e, int d){
+    char palavra_maiuscula[50];
     int i=0, j=0, palavra_cifrada[50], tam_palavra=0;
 
-    //cout << palavra << endl;
     tam_palavra = strlen(palavra);
 
     while(palavra[i] != '\0'){
-        palavra_c[i] = toupper(palavra[i]);
+        palavra_maiuscula[i] = toupper(palavra[i]);
         i++;
     }
-    //cout << palavra_c << endl;
 
     for(i=0; i<tam_palavra; i++){
-           switch(palavra_c[i]){
+           switch(palavra_maiuscula[i]){
                 case 'A':
                     palavra_cifrada[i] = 1;
                     break;
@@ -139,42 +136,59 @@ int palavra_numerica(void/*int n, int z, int e, int d*/){
                     break;
         }
     }
+
     //printar a palavra numerica
     for(j=0; j<tam_palavra; j++){
         cout << palavra_cifrada[j];
     }
+
+    //encriptando(palavra_cifrada, n, z, e, d );
+
+
 }
 ///============================================================================================================
-int calcule_n_z_e_d(int p, int q){
-    int n, z, e, d;
+int calcule_n(int P, int Q){
+     int n=0;
+     n = P * Q;
 
-    n = p * q;
-    z = (p-1)*(q-1);
+     return n;
+}
+///============================================================================================================
+int calcule_z(int P, int Q){
+    int z=0;
+    z = (P-1)*(Q-1);
 
-    cout << "N= " << n << endl;
-    cout << "Z= " << z << endl;
+    return z;
+}
+///============================================================================================================
+int calcule_e(int Z){
+    int e=0;
 
-    if(z <= 0){
+    if(Z <= 0){
         cout << "Erro: z <= 0!" << endl;
     }
     else{
-        for(e = 2; e < z; e++){
-            if (__gcd(e, z) == 1){ //gcd maior divisor comum retorna 0 se M e N forem 0
+        for(e = 2; e < Z; e++){
+            if (__gcd(e, Z) == 1){ //gcd maior divisor comum retorna 0 se M e N forem 0
               break;  //para, quando o valor de E seja um divisor comum de Z sendo primos entre si
-            }
-        }
-        for(d = e+1; d<1200; d++){
-            if(((e*d) % z) == 1){
-                cout << "D= " << d << endl;
-                break;
             }
         }
     }
 
-    palavra_numerica();
-    encriptando(n, z, e, d);
+    return e;
 }
+///============================================================================================================
+int calcule_d(int E, int Z_2){
+    int d=0;
 
+        for(d = E+1; d<1200; d++){
+            if(((E*d) % Z_2) == 1){
+                break;
+            }
+        }
+
+    return d;
+}
 ///============================================================================================================
 //funçao pra retornar verdadeiro ou falso quando for primo ou nao
 bool primo(int x){
@@ -212,7 +226,7 @@ bool teste_primo(int P, int Q){
 }
 ///============================================================================================================
 int main(){
-    int p, q;
+    int p, q, n, z, d, e;
     bool primo_p_q = false;
 
     cout << "Digite a palavra que voce quer criptografar: ";
@@ -227,7 +241,12 @@ int main(){
         primo_p_q = teste_primo(p, q);
     }
 
-    calcule_n_z_e_d(p, q);
+    n = calcule_n(p, q);
+    z = calcule_z(p, q);
+    e = calcule_e(z);
+    d = calcule_d(e, z);
+
+    cout << n << "\n" << z << "\n" << e << "\n"<< d << endl;
 
     return 0;
 }
