@@ -7,20 +7,23 @@
 using namespace std;
 ///============================================================================================================
 
-char palavra[50];  //variavel global
+//char palavra[50];  //variavel global
 
 
 ///============================================================================================================
 /*void encriptando(*int palavra_cifrada_2[50], int n, int z, int e, int d){
 
 
-
 }*/
-
 ///============================================================================================================
-void palavra_numerica(int n, int z, int e, int d){
+void palavra_numerica(int n, int z, int e, int d, char *palavra_pont){
     char palavra_maiuscula[50];
     int i=0, j=0, palavra_cifrada[50], tam_palavra=0;
+
+    //cout << palavra_pont << endl;
+
+
+    ///mudar para o ponteiro palavra_pont =====================================================================================================================================
 
     tam_palavra = strlen(palavra);
 
@@ -225,6 +228,7 @@ bool teste_primo(int P, int Q){
 int main(){
     int p, q, n, z, d, e;
     bool primo_p_q = false;
+    char palavra[50];
 
     cout << "Digite a palavra que voce quer criptografar: ";
     cin >> palavra;
@@ -241,7 +245,8 @@ int main(){
     e = calcule_e(z);
     d = calcule_d(e, z);
 
-    palavra_numerica(n, z, e, d);
+    palavra_numerica(n, z, e, d, palavra);
+
 
     //cout << n << "\n" << z << "\n" << e << "\n"<< d << endl;
 
