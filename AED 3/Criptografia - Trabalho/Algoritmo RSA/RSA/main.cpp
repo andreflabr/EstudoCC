@@ -7,138 +7,129 @@
 using namespace std;
 
 ///============================================================================================================
-/*void encriptando(*int palavra_cifrada_2[50], int n, int z, int e, int d){
+void calculo_cifrar_decifrar(int *E, int *D, int *N, int *palavra_numerada, int *tam_palavra){
+    int c=0, m=0;;
 
 
-}*/
+
+
+}
 ///============================================================================================================
-void palavra_numerica(int n, int z, int e, int d, char *palavra){
+void palavra_numerica(int *N, int *Z, int *E, int *D, char *palavra, int *palavra_numerada, int *tam_palavra){
     char palavra_maiuscula[50];
-    int i=0, j=0, palavra_cifrada[50], tam_palavra=0;
-
-    //cout << palavra_pont << endl;
-
-
-    ///mudar para o ponteiro palavra_pont =====================================================================================================================================
-
-    tam_palavra = strlen(palavra);
+    int i=0;
 
     while(palavra[i] != '\0'){
         palavra_maiuscula[i] = toupper(palavra[i]);
         i++;
     }
 
-    for(i=0; i<tam_palavra; i++){
+    for(i=0; i<(*tam_palavra); i++){
            switch(palavra_maiuscula[i]){
                 case 'A':
-                    palavra_cifrada[i] = 1;
+                    palavra_numerada[i] = 1;
                     break;
 
                 case 'B':
-                    palavra_cifrada[i] = 2;
+                    palavra_numerada[i] = 2;
                     break;
 
                 case 'C':
-                    palavra_cifrada[i] = 3;
+                    palavra_numerada[i] = 3;
                     break;
 
                 case 'D':
-                    palavra_cifrada[i] = 4;
+                    palavra_numerada[i] = 4;
                     break;
 
                 case 'E':
-                    palavra_cifrada[i] = 5;
+                    palavra_numerada[i] = 5;
                     break;
 
                 case 'F':
-                    palavra_cifrada[i] = 6;
+                    palavra_numerada[i] = 6;
                     break;
 
                 case 'G':
-                    palavra_cifrada[i] = 7;
+                    palavra_numerada[i] = 7;
                     break;
 
                 case 'H':
-                    palavra_cifrada[i] = 8;
+                    palavra_numerada[i] = 8;
                     break;
 
                 case 'I':
-                    palavra_cifrada[i] = 9;
+                    palavra_numerada[i] = 9;
                     break;
 
                 case 'J':
-                    palavra_cifrada[i] = 10;
+                    palavra_numerada[i] = 10;
                     break;
 
                 case 'K':
-                    palavra_cifrada[i] = 11;
+                    palavra_numerada[i] = 11;
                     break;
 
                 case 'L':
-                    palavra_cifrada[i] = 12;
+                    palavra_numerada[i] = 12;
                     break;
 
                 case 'M':
-                    palavra_cifrada[i] = 13;
+                    palavra_numerada[i] = 13;
                     break;
 
                 case 'N':
-                    palavra_cifrada[i] = 14;
+                    palavra_numerada[i] = 14;
                     break;
 
                 case 'O':
-                    palavra_cifrada[i] = 15;
+                    palavra_numerada[i] = 15;
                     break;
 
                 case 'P':
-                    palavra_cifrada[i] = 16;
+                    palavra_numerada[i] = 16;
                     break;
 
                 case 'Q':
-                    palavra_cifrada[i] = 17;
+                    palavra_numerada[i] = 17;
                     break;
 
                 case 'R':
-                    palavra_cifrada[i] = 18;
+                    palavra_numerada[i] = 18;
                     break;
 
                 case 'S':
-                    palavra_cifrada[i] = 19;
+                    palavra_numerada[i] = 19;
                     break;
 
                 case 'T':
-                    palavra_cifrada[i] = 20;
+                    palavra_numerada[i] = 20;
                     break;
 
                 case 'U':
-                    palavra_cifrada[i] = 21;
+                    palavra_numerada[i] = 21;
                     break;
 
                 case 'V':
-                    palavra_cifrada[i] = 22;
+                    palavra_numerada[i] = 22;
                     break;
 
                 case 'W':
-                    palavra_cifrada[i] = 23;
+                    palavra_numerada[i] = 23;
                     break;
 
                 case 'X':
-                    palavra_cifrada[i] = 24;
+                    palavra_numerada[i] = 24;
                     break;
 
                 case 'Y':
-                    palavra_cifrada[i] = 25;
+                    palavra_numerada[i] = 25;
                     break;
 
                 case 'Z':
-                    palavra_cifrada[i] = 26;
+                    palavra_numerada[i] = 26;
                     break;
         }
-    }
-
-    //printar a palavra numerica
-    for(j=0; j<tam_palavra; j++){
-        cout << "\t" << palavra_cifrada[j];
     }
 
 }
@@ -224,13 +215,16 @@ bool teste_primo(int *P, int *Q){
 }
 ///============================================================================================================
 int main(){
-    int p, q, n, z, d, e;
-
+    int p, q, n, z, d, e, tam_palavra;
     bool primo_p_q = false;
     char palavra[50];
+    int palavra_numerada[50];
 
     cout << "Digite a palavra que voce quer criptografar: ";
     cin >> palavra;
+
+    //tamanho palavra digitada
+    tam_palavra = strlen(palavra);
 
     //usuario digitar os valores primos quando eles sao falsos
     while(primo_p_q != true){
@@ -246,7 +240,17 @@ int main(){
 
     cout << n << "\n" << z << "\n" << e << "\n"<< d << endl;
 
-    palavra_numerica(n, z, e, d, palavra);
+    ///chama função que substitui letra pela sua posição no alfabeto
+    palavra_numerica(&n, &z, &e, &d, palavra, palavra_numerada, &tam_palavra);
+
+    ///printar a palavra numerica
+    for(int j=0; j<tam_palavra; j++){
+        cout << "\t" << palavra_numerada[j];
+    }
+
+    ///função
+    calculo_cifrar_decifrar(&e, &d, &n, palavra_numerada, &tam_palavra);
+
 
 
     return 0;
