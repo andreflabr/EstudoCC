@@ -8,9 +8,24 @@ using namespace std;
 
 ///============================================================================================================
 void calculo_cifrar_decifrar(int *E, int *D, int *N, int *palavra_numerada, int *tam_palavra){
-    int c=0, m=0;;
+    int c[50], m[50], j=0; //m elevado a E
 
+    ///for m^E
+    for(j=0; j<(*tam_palavra); j++){
+        m[j] = pow(palavra_numerada[j], *E);
+        if((m[j] % (*N)) != (*N)){
+            c[j] = m[j] % (*N);
+        }
+        else {
+            cout << "\terro ao cifrar";
+        }
 
+    }
+
+    cout << "\nPalavra crifrada: " << endl;
+    for(j=0; j<(*tam_palavra); j++){
+        cout << "\t" << c[j];
+    }
 
 
 }
@@ -148,14 +163,14 @@ int calcule_z(int *P, int *Q){
     return z;
 }
 ///============================================================================================================
-int calcule_e(int *Z){
+int calcule_e(int *Z, int *N){
     int e=0;
 
     if(*Z <= 0){
         cout << "Erro: z <= 0!" << endl;
     }
     else{
-        for(e = 2; e < (*Z); e++){
+        for(e = 2; e < (*N); e++){
             if (__gcd(e, *Z) == 1){ //gcd maior divisor comum retorna 0 se M e N forem 0
               break;  //para, quando o valor de E seja um divisor comum de Z sendo primos entre si
             }
@@ -235,7 +250,7 @@ int main(){
 
     n = calcule_n(&p, &q);
     z = calcule_z(&p, &q);
-    e = calcule_e(&z);
+    e = calcule_e(&z, &n);
     d = calcule_d(&e, &z);
 
     cout << n << "\n" << z << "\n" << e << "\n"<< d << endl;
@@ -243,15 +258,15 @@ int main(){
     ///chama função que substitui letra pela sua posição no alfabeto
     palavra_numerica(&n, &z, &e, &d, palavra, palavra_numerada, &tam_palavra);
 
+
     ///printar a palavra numerica
+    cout << "\nPalavra substituida pelo seu numeral: "<< endl;
     for(int j=0; j<tam_palavra; j++){
         cout << "\t" << palavra_numerada[j];
     }
 
     ///função
     calculo_cifrar_decifrar(&e, &d, &n, palavra_numerada, &tam_palavra);
-
-
 
     return 0;
 }
