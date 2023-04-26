@@ -1,5 +1,4 @@
 //https://www.geeksforgeeks.org/stdgcd-c-inbuilt-function-finding-gcd/
-
 #include<iostream>
 #include<bits/stdc++.h>
 #include<math.h> //pra usar o sqrt
@@ -163,15 +162,19 @@ int calcule_z(int *P, int *Q){
     return z;
 }
 ///============================================================================================================
-int calcule_e(int *Z, int *N){
-    int e=0;
+int calcule_e(int *Z, int *N){ ///arrumar essa função, esta errada o valor de E
+    int e;
+
+    ///E nao pode ser igual a D
 
     if(*Z <= 0){
         cout << "Erro: z <= 0!" << endl;
     }
     else{
-        for(e = 2; e < (*N); e++){
+        for(e = ((*N)-1); e > 2; e--){
+            //cout << "   ENTROU NO FOR   " << endl;
             if (__gcd(e, *Z) == 1){ //gcd maior divisor comum retorna 0 se M e N forem 0
+              cout << e << "!!!" <<  endl;
               break;  //para, quando o valor de E seja um divisor comum de Z sendo primos entre si
             }
         }
