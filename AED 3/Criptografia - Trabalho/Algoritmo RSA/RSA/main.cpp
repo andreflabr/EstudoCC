@@ -1,19 +1,21 @@
 //https://www.geeksforgeeks.org/stdgcd-c-inbuilt-function-finding-gcd/
 #include<iostream>
 #include<bits/stdc++.h>
-#include<math.h> //pra usar o sqrt
-#include<cctype> //biblioteca pra usar o __gcd
+//#include<stdint.h>
+//#include<math.h> //pra usar o sqrt estao na bits/stcd++.h
+//#include<numeric> //biblioteca pra usar o __gcd estao na bits/stcd++.h
 using namespace std;
 
 ///============================================================================================================
 void calculo_cifrar_decifrar(int *E, int *D, int *N, int *palavra_numerada, int *tam_palavra){
-    int c[50], m[50], j=0; //m elevado a E
+    int cifrada[50], decifrada[50], m[50], j=0; //m elevado a E
+    long long int c_d[50]; //cifrada elevado a d
 
     ///for m^E
     for(j=0; j<(*tam_palavra); j++){
         m[j] = pow(palavra_numerada[j], *E);
         if((m[j] % (*N)) != (*N)){
-            c[j] = m[j] % (*N);
+            cifrada[j] = m[j] % (*N);
         }
         else {
             cout << "\terro ao cifrar";
@@ -23,10 +25,29 @@ void calculo_cifrar_decifrar(int *E, int *D, int *N, int *palavra_numerada, int 
 
     cout << "\nPalavra crifrada: " << endl;
     for(j=0; j<(*tam_palavra); j++){
-        cout << "\t" << c[j];
+        cout << "\t" << cifrada[j]; //palavra cifrada guardada no vetor C
     }
+    cout << endl;
 
+/*
+///---------------------------------------------------------------decriptando
+/// c^d -> m =c^d mod n
 
+    for(j=0; j<(*tam_palavra); j++){
+        c_d[j] = pow(cifrada[j], *D);
+        cout << c_d[j] << " -> numero cifado elevado a d no long long int";
+        if(c_d[j]){
+            decifrada[j] = c_d[j] % (*N);
+        }
+        else {
+            cout << "\terro ao decifrar";
+        }
+    }
+    cout << "\nPalavra decrifrada: " << endl;
+    for(j=0; j<(*tam_palavra); j++){
+        cout << "\t" << decifrada[j]; //palavra cifrada guardada no vetor C
+    }
+*/
 }
 ///============================================================================================================
 void palavra_numerica(int *N, int *Z, int *E, int *D, char *palavra, int *palavra_numerada, int *tam_palavra){
@@ -149,13 +170,15 @@ void palavra_numerica(int *N, int *Z, int *E, int *D, char *palavra, int *palavr
 }
 ///============================================================================================================
 int calcule_n(int *P, int *Q){
-     int n=0;
-     n = (*P) * (*Q);
+    ///n = pq
+    int n=0;
+    n = (*P) * (*Q);
 
-     return n;
+    return n;
 }
 ///============================================================================================================
 int calcule_z(int *P, int *Q){
+    ///(p-1)(q-1)
     int z=0;
     z = ((*P)-1)*((*Q)-1);
 
@@ -166,29 +189,32 @@ int calcule_e(int *Z, int *N){ ///arrumar essa função, esta errada o valor de E
     int e;
 
     ///E nao pode ser igual a D
+    ///E nao possua fator comum com z (E e Z sao primos)
 
-    if(*Z <= 0){
-        cout << "Erro: z <= 0!" << endl;
-    }
-    else{
-        for(e = ((*N)-1); e > 2; e--){
+        for((e = 2); e < (*N); e++){
             //cout << "   ENTROU NO FOR   " << endl;
-            if (__gcd(e, *Z) == 1){ //gcd maior divisor comum retorna 0 se M e N forem 0
-              cout << e << "!!!" <<  endl;
-              break;  //para, quando o valor de E seja um divisor comum de Z sendo primos entre si
+            if (__gcd(e, (*Z)) == 1){ //gcd maior divisor comum retorna 0 se M e N forem 0
+              cout << e << " e" <<  endl;
+              //break;
             }
         }
-    }
 
     return e;
 }
 ///============================================================================================================
 int calcule_d(int *E, int *Z){
+    ///ed mod z = 1
     int d=0;
 
-        for(d = (*E)+1; d<1200; d++){
+        for(d = 0; d < 1200; d++){
             if((((*E)*d) % (*Z)) == 1){
-                break;
+                if(*E == d){
+                    //so pra pular quando for o numero igualao E
+                }
+                else{
+                    cout << d << " d" << endl;
+                    //break;
+                }
             }
         }
 
@@ -256,7 +282,7 @@ int main(){
     e = calcule_e(&z, &n);
     d = calcule_d(&e, &z);
 
-    cout << n << "\n" << z << "\n" << e << "\n"<< d << endl;
+    cout << "N = " << n << "\n" << "Z = " <<  z << "\n" << "E = " <<  e << "\n" << "D = " <<  d << endl;
 
     ///chama função que substitui letra pela sua posição no alfabeto
     palavra_numerica(&n, &z, &e, &d, palavra, palavra_numerada, &tam_palavra);
