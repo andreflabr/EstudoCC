@@ -9,7 +9,7 @@ using namespace std;
 ///============================================================================================================
 void calculo_cifrar_decifrar(int *E, int *D, int *N, int *palavra_numerada, int *tam_palavra){
     int cifrada[50], decifrada[50], m[50], j=0; //m elevado a E
-    long long int c_d[50]; //cifrada elevado a d
+    int64_t c_d[50]; //cifrada elevado a d
 
     ///for m^E
     for(j=0; j<(*tam_palavra); j++){
