@@ -8,19 +8,15 @@ using namespace std;
 
 ///============================================================================================================
 void calculo_cifrar_decifrar(int *E, int *D, int *N, int *palavra_numerada, int *tam_palavra){
-    int cifrada[50], decifrada[50], m[50], j=0; //m elevado a E
-    int64_t c_d[50]; //cifrada elevado a d
+    long long int j=0, cifrada[50], m[50]; //m elevado a E
+    //__int64 c_d[50], decifrada[50]; //cifrada elevado a d
 
-    ///for m^E
+/// criptando ---------------------------------------------------------------
+/// for m^E
+
     for(j=0; j<(*tam_palavra); j++){
         m[j] = pow(palavra_numerada[j], *E);
-        if((m[j] % (*N)) != (*N)){
-            cifrada[j] = m[j] % (*N);
-        }
-        else {
-            cout << "\terro ao cifrar";
-        }
-
+        cifrada[j] = m[j] % (*N);
     }
 
     cout << "\nPalavra crifrada: " << endl;
@@ -30,18 +26,15 @@ void calculo_cifrar_decifrar(int *E, int *D, int *N, int *palavra_numerada, int 
     cout << endl;
 
 /*
-///---------------------------------------------------------------decriptando
+/// decriptando ---------------------------------------------------------------
 /// c^d -> m =c^d mod n
 
     for(j=0; j<(*tam_palavra); j++){
-        c_d[j] = pow(cifrada[j], *D);
+        //cout << "----teste for----"<< endl;
+        c_d[j] = pow(cifrada[j], (*D));
         cout << c_d[j] << " -> numero cifado elevado a d no long long int";
-        if(c_d[j]){
-            decifrada[j] = c_d[j] % (*N);
-        }
-        else {
-            cout << "\terro ao decifrar";
-        }
+        decifrada[j] = c_d[j] % (*N);
+
     }
     cout << "\nPalavra decrifrada: " << endl;
     for(j=0; j<(*tam_palavra); j++){
@@ -191,11 +184,10 @@ int calcule_e(int *Z, int *N){ ///arrumar essa função, esta errada o valor de E
     ///E nao pode ser igual a D
     ///E nao possua fator comum com z (E e Z sao primos)
 
-        for((e = 2); e < (*N); e++){
-            //cout << "   ENTROU NO FOR   " << endl;
-            if (__gcd(e, (*Z)) == 1){ //gcd maior divisor comum retorna 0 se M e N forem 0
-              cout << e << " e" <<  endl;
-              //break;
+        for((e = 2); (e < (*N)); e++){
+            if(__gcd(e, (*Z)) == 1){ //gcd maior divisor comum
+              //cout << e << " e" <<  endl;
+              break;
             }
         }
 
@@ -207,22 +199,18 @@ int calcule_d(int *E, int *Z){
     int d=0;
 
         for(d = 0; d < 1200; d++){
-            if((((*E)*d) % (*Z)) == 1){
-                if(*E == d){
-                    //so pra pular quando for o numero igualao E
-                }
-                else{
-                    cout << d << " d" << endl;
-                    //break;
-                }
+            if ((((((*E)*d)-1) % (*Z)) == 0) & ((*E) != d)){
+                    break;
+                    //cout << d << " d" << endl;
             }
         }
 
     return d;
 }
 ///============================================================================================================
-//funçao pra retornar verdadeiro ou falso quando for primo ou nao
 bool primo(int *x){
+//funçao pra retornar verdadeiro ou falso quando for primo ou nao
+
     if(*x <= 1){
         return false; //falso primo
     }
@@ -235,8 +223,9 @@ bool primo(int *x){
     return true; //eh primo
 }
 ///============================================================================================================
-//testa de o que a função primo retornau é verdadeiro ou falso
 bool teste_primo(int *P, int *Q){
+//testa se o que a função primo retornar é verdadeiro ou falso
+
     bool b_p, b_q;
 
     //cout << *P << *Q << endl;
