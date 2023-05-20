@@ -1,40 +1,58 @@
-//https://www.geeksforgeeks.org/stdgcd-c-inbuilt-function-finding-gcd/
+
+///     LEIA POR FAVOR!
+
+
+
+///               O Algoritmo esta somente criptografando, os calculos de E e D ele pega o primeiro valor que der True!
+
+///                             A criptografia leva como base a posição numerica das letras no alfabeto!
+
+//=====================================================================================================================================
+
+///A parte de decriptografia nao consegui fazer funcionar, mas como no enunciado pede somente a parte de crifrar entao esta tudo certo!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #include<iostream>
-#include<bits/stdc++.h>
-//#include<stdint.h>
-//#include<math.h> //pra usar o sqrt estao na bits/stcd++.h
-//#include<numeric> //biblioteca pra usar o __gcd estao na bits/stcd++.h
+#include<bits/stdc++.h>//biblioteca pra usar o __gcd estao na bits/stcd++.h // pra usar o sqrt estao na bits/stcd++.h
+
 using namespace std;
 
 ///============================================================================================================
 void calculo_cifrar_decifrar(int *E, int *D, int *N, int *palavra_numerada, int *tam_palavra){
-    long long int j=0, cifrada[50], m[50]; //m elevado a E
-    //__int64 c_d[50], decifrada[50]; //cifrada elevado a d
-
-/// criptando ---------------------------------------------------------------
-/// for m^E
-
+    int j=0, cifrada[50], m[50]; //m elevado a E
+    //long long int decifrada[50]; //cifrada elevado a d
+///------------------------------------------------------------------------------------------------------------
+    // for m^E - cifrando
     for(j=0; j<(*tam_palavra); j++){
         m[j] = pow(palavra_numerada[j], *E);
         cifrada[j] = m[j] % (*N);
     }
 
-    cout << "\nPalavra crifrada: " << endl;
+    cout << "\nPalavra crifrada: ";
     for(j=0; j<(*tam_palavra); j++){
-        cout << "\t" << cifrada[j]; //palavra cifrada guardada no vetor C
+        cout << cifrada[j]; //palavra cifrada guardada no vetor C
     }
     cout << endl;
-
+///------------------------------------------------------------------------------------------------------------
 /*
-/// decriptando ---------------------------------------------------------------
-/// c^d -> m =c^d mod n
-
+    // c^d -> m =c^d mod n - decriptando
     for(j=0; j<(*tam_palavra); j++){
         //cout << "----teste for----"<< endl;
-        c_d[j] = pow(cifrada[j], (*D));
-        cout << c_d[j] << " -> numero cifado elevado a d no long long int";
-        decifrada[j] = c_d[j] % (*N);
-
+        decifrada[j] = ((pow(cifrada[j], (*D))) % (*N));
+        cout << decifrada[j] << " -> numero cifado elevado a d no long long int";
     }
     cout << "\nPalavra decrifrada: " << endl;
     for(j=0; j<(*tam_palavra); j++){
@@ -170,7 +188,7 @@ int calcule_n(int *P, int *Q){
     return n;
 }
 ///============================================================================================================
-int calcule_z(int *P, int *Q){
+int totiente_n(int *P, int *Q){
     ///(p-1)(q-1)
     int z=0;
     z = ((*P)-1)*((*Q)-1);
@@ -184,8 +202,8 @@ int calcule_e(int *Z, int *N){ ///arrumar essa função, esta errada o valor de E
     ///E nao pode ser igual a D
     ///E nao possua fator comum com z (E e Z sao primos)
 
-        for((e = 2); (e < (*N)); e++){
-            if(__gcd(e, (*Z)) == 1){ //gcd maior divisor comum
+        for((e = 3); (e < (*N)); e++){
+            if((__gcd(e, (*Z)) == 1)){ //gcd maior divisor comum
               //cout << e << " e" <<  endl;
               break;
             }
@@ -195,13 +213,13 @@ int calcule_e(int *Z, int *N){ ///arrumar essa função, esta errada o valor de E
 }
 ///============================================================================================================
 int calcule_d(int *E, int *Z){
-    ///ed mod z = 1
-    int d=0;
+    ///e*d mod z = 1
+    int d;
 
-        for(d = 0; d < 1200; d++){
-            if ((((((*E)*d)-1) % (*Z)) == 0) & ((*E) != d)){
-                    break;
-                    //cout << d << " d" << endl;
+        for(d = 2; d < 1200; d++){
+            if (((((*E)*d) % (*Z)) == 1) & ((*E) != d)){
+                //cout << d << " d" << endl;
+                break;
             }
         }
 
@@ -252,39 +270,51 @@ int main(){
     bool primo_p_q = false;
     char palavra[50];
     int palavra_numerada[50];
-
-    cout << "Digite a palavra que voce quer criptografar: ";
+///------------------------------------------------------------------------------------------------------------
+    cout << "(Sem espacos) Digite a palavra que voce quer criptografar: ";
     cin >> palavra;
-
+///------------------------------------------------------------------------------------------------------------
     //tamanho palavra digitada
     tam_palavra = strlen(palavra);
-
+///------------------------------------------------------------------------------------------------------------
     //usuario digitar os valores primos quando eles sao falsos
     while(primo_p_q != true){
         cout << "Digite valores primos para P e Q:" << endl;
-        cin >> p >> q;
+        cin >> p;
+        cin >> q;
         primo_p_q = teste_primo(&p, &q);
     }
-
+///------------------------------------------------------------------------------------------------------------
     n = calcule_n(&p, &q);
-    z = calcule_z(&p, &q);
+    z = totiente_n(&p, &q);
     e = calcule_e(&z, &n);
     d = calcule_d(&e, &z);
 
-    cout << "N = " << n << "\n" << "Z = " <<  z << "\n" << "E = " <<  e << "\n" << "D = " <<  d << endl;
+///------------------------------------------------------------------------------------------------------------
+    cout << "N = " << n << "\n" << "Tot = " <<  z << "\n" << "E = " <<  e << "\n" << "D = " <<  d << endl;
 
-    ///chama função que substitui letra pela sua posição no alfabeto
+    cout << "\nChave Publica(" << n << ", " << e << ")" << endl;
+    cout << "Chave Privada(" << n << ", " << d << ")" << endl;
+///------------------------------------------------------------------------------------------------------------
+    //chama função que substitui letra pela sua posição no alfabeto
     palavra_numerica(&n, &z, &e, &d, palavra, palavra_numerada, &tam_palavra);
-
-
-    ///printar a palavra numerica
+///------------------------------------------------------------------------------------------------------------
+/*    //printar a palavra numerica
     cout << "\nPalavra substituida pelo seu numeral: "<< endl;
     for(int j=0; j<tam_palavra; j++){
         cout << "\t" << palavra_numerada[j];
     }
-
-    ///função
+*/
+///------------------------------------------------------------------------------------------------------------
+    //função para crifar
     calculo_cifrar_decifrar(&e, &d, &n, palavra_numerada, &tam_palavra);
-
+///------------------------------------------------------------------------------------------------------------
     return 0;
 }
+
+/*
+valores teste
+
+hello 29 37
+
+*/
