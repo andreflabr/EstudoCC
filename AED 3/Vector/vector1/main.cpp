@@ -2,17 +2,17 @@
 using namespace std;
 
 int main(){
-    int valor_inserido=0, i=12;
+    int valor_inserido=0, i=0, qtdd_valor=12; //definir a quantidade de valores a ser inserido aqui(qtdd_valor)
     vector<int>vec_impar, vec_par;
     vector<int>::iterator j;
 
 
-    for(i=0; i<12 ; i++){
+    for(i=0; i< qtdd_valor; i++){
         cout << "\tDigite na posicao " << i << " o valor que sera separado em par ou impar:\t";
         cin >> valor_inserido;
         cout << endl;
 
-        if( (vec_par.size() < 12) && (vec_impar.size() < 12) ){ //verifica se o vector ja esta cheio
+        if( (vec_par.size() < qtdd_valor) && (vec_impar.size() < qtdd_valor) ){ //verifica se o vector ja esta cheio
             //par
             if(valor_inserido % 2 == 0){
                 vec_par.push_back(valor_inserido);
@@ -28,10 +28,10 @@ int main(){
     sort(vec_par.begin(), vec_par.end());
 
     for(j = vec_par.begin(); j != vec_par.end(); ++j){
-        printf("%d \teh par (%d)\n", *j, j);
+        printf("%d \teh par \n", *j);
     }
     for(j = vec_impar.begin(); j != vec_impar.end(); ++j){
-        printf("%d \teh impar (%d)\n", *j, j);
+        printf("%d \teh impar \n", *j);
     }
 
     return 0;
