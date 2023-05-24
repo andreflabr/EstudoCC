@@ -6,6 +6,8 @@ using namespace std;
 
 int main(){
     string nome;
+
+
     int  id=0;
     double nota_1, nota_2, media;
 
