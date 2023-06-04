@@ -2,8 +2,7 @@
 
 using namespace std;
 
-
-int contador_teste(const bitset<6> &sequencia, const bitset<32> &frase_sequencia) {
+int contador_teste(const bitset<6> sequencia, const bitset<32> frase_sequencia){
     int x = 0;
     int sequencia_tamanho = sequencia.size();
     int frase_sequencia_tamanho = frase_sequencia.size();
@@ -14,11 +13,10 @@ int contador_teste(const bitset<6> &sequencia, const bitset<32> &frase_sequencia
             x++;
         }
     }
-
     return x;
 }
 
-int main() {
+int main(){
     bitset<6> teste("100110");
     bitset<32> frase("11000100110001101100100110");
 
