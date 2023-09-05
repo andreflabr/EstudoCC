@@ -1,10 +1,11 @@
 class Heroi:
-"""
+    
+
     voa = False
     lanca_teia = False
     possui_arma = False
     frase_comum = ""
-"""
+
     def __init__ (self, voa,possui_arma, lanca_teia, frase_comum):
         print("Executando init...")
         self.voa = voa
