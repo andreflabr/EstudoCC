@@ -1,0 +1,4 @@
+a) nor $t0, $t1, $zero
+b) li $s1, 10 
+c) sub $t2, $zero, $t1
+d) beq $s2, $zero, label
