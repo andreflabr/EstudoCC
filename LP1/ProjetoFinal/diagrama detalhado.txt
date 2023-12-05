@@ -1,0 +1,95 @@
+
+Diagrama de Classes UML
+
+abstract class Pessoa {
+  nome: String
+  idade: int
+  exibirInformacoes(): void
+}
+
+class Aluno extends Pessoa {
+  matricula: int
+}
+
+class Professor extends Pessoa {
+  disciplina: String
+}
+
+class Disciplina {
+  nome: String
+  getNome(): String
+}
+
+class Curso {
+  nome: String
+  disciplinas: ArrayList<Disciplina>
+  adicionarDisciplina(Disciplina): void
+  exibirDisciplinas(): void
+}
+
+Aluno -> Disciplina
+Professor -> Disciplina
+Curso -> Disciplina
+
+
+
+Diagrama de Objetos UML
+
+aluno1: Aluno
+professor1: Professor
+disciplina1: Disciplina
+curso1: Curso
+
+aluno1 -- disciplina1
+professor1 -- disciplina1
+curso1 -- disciplina1
+
+
+
+temos as seguintes classes:
+
+Pessoa: Classe abstrata que representa uma pessoa em geral.
+Aluno: Classe concreta que herda de Pessoa e representa um aluno.
+Professor: Classe concreta que herda de Pessoa e representa um professor.
+Disciplina: Classe concreta que representa uma disciplina.
+Curso: Classe concreta que representa um curso.
+Os relacionamentos entre as classes são os seguintes:
+
+Aluno tem uma associação com Disciplina (composição)
+Professor tem uma associação com Disciplina (composição)
+Curso tem uma associação com Disciplina (composição)
+
+
+
+Os atributos e métodos das classes são os seguintes:
+
+Pessoa:
+nome: String
+idade: int
+exibirInformacoes(): void
+Aluno:
+matricula: int
+Professor:
+disciplina: String
+Disciplina:
+nome: String
+getNome(): String
+Curso:
+nome: String
+disciplinas: ArrayList<Disciplina>
+adicionarDisciplina(Disciplina): void
+exibirDisciplinas(): void
+
+
+
+temos as seguintes instâncias:
+
+aluno1: Instância da classe Aluno.
+professor1: Instância da classe Professor.
+disciplina1: Instância da classe Disciplina.
+curso1: Instância da classe Curso.
+Os relacionamentos entre as instâncias são os seguintes:
+
+aluno1 está associado a disciplina1
+professor1 está associado a disciplina1
+curso1 está associado a disciplina1
