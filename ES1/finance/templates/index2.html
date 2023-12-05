@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizar Receitas, Despesas, Metas e Dicas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 45%;
+            margin: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4caf50;
+            color: #fff;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .tips-container {
+            background-color: #e0e0e0;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Receitas</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Descrição</th>
+                    <th>Valor</th>
+                    <th>Data</th>
+                </tr>
+            </thead>
+            <!-- Adicione aqui as linhas com dados de receitas -->
+        </table>
+    </div>
+
+    <div class="container">
+        <h2>Despesas</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Descrição</th>
+                    <th>Valor</th>
+                    <th>Data</th>
+                </tr>
+            </thead>
+            <!-- Adicione aqui as linhas com dados de despesas -->
+        </table>
+    </div>
+
+    <div class="container">
+        <h2>Metas</h2>
+        <ul>
+            <!-- Adicione aqui as metas -->
+            <li>Meta 1: R$ 1000 até 30/06/2023</li>
+            <li>Meta 2: R$ 2000 até 31/12/2023</li>
+        </ul>
+    </div>
+
+    <div class="container tips-container">
+        <h2>Dicas</h2>
+        <p>Aqui vão algumas dicas úteis para a gestão financeira:</p>
+        <ul>
+            <li>Registre suas transações regularmente.</li>
+            <li>Analise suas despesas para identificar oportunidades de economia.</li>
+            <li>Defina metas realistas para seus objetivos financeiros.</li>
+        </ul>
+    </div>
+
+</body>
+</html>
