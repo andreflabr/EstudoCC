@@ -39,11 +39,11 @@ class Saldo (models.Model):
     
 
 class Dica (models.Model):
-
-    texto = models.CharField(max_length=400)
+    titulo = models.CharField(max_length=150)
+    texto = models.CharField(max_length=500)
 
     def __str__ (self):
-        return f'{self.texto}'
+        return f'{self.texto}{self.texto}'
     
 
 class TipoMeta (models.Model):
@@ -63,6 +63,7 @@ class Meta (models.Model):
     
 
 class Receita (models.Model):
+    descricao=models.CharField(max_length = 150)
     tipo_saldo = models.ManyToManyField(TipoSaldo)
     valor = models.DecimalField
 

@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Página Inicial</title>
+  <title>Finance</title>
   <!-- Incluindo Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-success">
-    <a class="navbar-brand" href="/">Biblioteca</a>
+    <a class="navbar-brand" href="/">Finance</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -19,10 +20,10 @@
             <a class="nav-link text-dark" href="/">Home</a>
           </li>
         <li class="nav-item">
-          <a class="nav-link text-dark" href="/receita/">Receita</a>
+          <a class="nav-link text-dark" href="/consulta/">Receita</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-dark" href="/despesa/">Despesa</a>
+          <a class="nav-link text-dark" href="/reserva/">Despesa</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-dark" href="/admin/">Administração</a>
@@ -30,14 +31,54 @@
       </ul>
     </div>
   </nav>
+<!--
 
   <div class="container mt-5">
-    <div class="jumbotron text-center">
-      <h1 class="display-4">Olá, é bom te ver por aqui</h1>
-      <p class="lead">Esta é a página inicial da Biblioteca</p>
-      <p class="lead">Seja Bem Vindo(A)</p>
-    </div>
+    <h2 class="mb-4">Receitas</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Descrição</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">Valor</th>
+
+        </tr>
+      {% for Receita in receitas %}
+      </thead>
+      <tbody>
+       <td>{{descricao.Receita}}</td>
+       <td>{{tipo.Receita}}</td>
+       <td>{{valor.Receita}}</td>
+      </tbody>
+       {% endfor %} 
+    </table>
   </div>
+
+  <div class="container mt-5">
+    <h2 class="mb-4">Despesas</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Descrição</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">Valor</th>
+
+        </tr>
+      {% for Despeas in receitas %}
+      </thead>
+      <tbody>
+       <td>{{descricao.Despesa}}</td>
+       <td>{{tipo.Despesa}}</td>
+       <td>{{valor.Despesa}}</td>
+      </tbody>
+       {% endfor %} 
+    </table>
+  </div>
+
+
+-->
+
+  
 
   <!-- Incluindo jQuery e Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
