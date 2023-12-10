@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página Inicial</title>
+  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .navbar {
+        width: 100%; 
+        background-color: #4caf50;
+        padding: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+    }
+
+    .navbar-nav {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .navbar-nav .nav-item {
+        margin-right: 20px;
+    }
+
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin-top: 70px; 
+    }
+
+    .card {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 45%;
+        margin: 20px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #4caf50;
+        color: #fff;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .tips-container {
+        background-color: #e0e0e0;
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 20px;
+    }
+
+    .button-style {
+        background-color: #4caf50; 
+        color: #fff; 
+        padding: 10px 20px; 
+        font-size: 16px; 
+        border: none; 
+        border-radius: 5px; 
+        cursor: pointer; 
+        transition: background-color 0.3s; 
+    }
+
+    .button-style:hover {
+        background-color: #45a049; 
+    }
+</style>
+</head>
+<body class="bodyclass">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <a class="navbar-brand" href="/">Finance</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/home/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/receitas/">Receita</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/despesas/">Despesa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/transacao/">Transação</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/admin/">Administração</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="card">
+        <h2>Receitas</h2>
+        <table>
+            <thead>
+                <tr>
+                  <th scope="col">Descrição</th>
+                  <th scope="col">Valor</th>
+                  <th scope="col">Data</th>
+                  <th scope="col">Fonte</th>
+                  <th scope="col">Método Recebimento</th>
+                </tr>
+                {% for receita in receitas %}
+            </thead>
+            <tbody>  
+                <td>{{receita.descricao }}</td>
+                <td>{{receita.valor }}</td>
+                <td>{{receita.data }}</td>
+                <td>{{receita.fonte }}</td>
+                <td>{{receita.metodo_recebimento }}</td>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div class="card">
+        <h2>Despesas</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Descrição</th>
+                    <th>Valor</th>
+                    <th>Data</th>
+                    <th>Tipo Despesa</th>
+                    <th>Local</th>
+                    <th>Método de Pagamento</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for despesa in despesas %}
+                    <tr>
+                        <td>{{ despesa.descricao }}</td>
+                        <td>{{ despesa.valor }}</td>
+                        <td>{{ despesa.data }}</td>
+                        <td>{{ despesa.tipo_despesa }}</td>
+                        <td>{{ despesa.local }}</td>
+                        <td>{{ despesa.metodo_pagamento }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card">
+        <h2>Metas</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tipo Meta</th>
+                    <th>Valor</th>
+                    <th>Descrição</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for meta in metas %}
+                    <tr>
+                        <td>{{ meta.tipo_meta }}</td>
+                        <td>{{ meta.valor }}</td>
+                        <td>{{ meta.descricao }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card">
+        <h2>Dicas</h2>
+        <ul>
+            {% for dica in dicas %}
+                <li>{{ dica.titulo }}: {{ dica.texto }}</li>
+                <br>
+            {% endfor %}
+
+        </ul>
+    </div>
+
+    <div class="transaction-form">
+        <form method="post" action="{% url 'criar_transacao' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="button-style">Nova Transação</button>
+        </form>
+    </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
